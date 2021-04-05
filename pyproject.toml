@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "secunda-augusta"
+name = "django-graphql"
 version = "0.1.0"
 description = ""
 authors = ["pcampos <pcampos119104@gmail.com>"]

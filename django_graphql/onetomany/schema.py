@@ -21,8 +21,6 @@ class Query(graphene.ObjectType):
         return SimpleSingle.objects.get(pk=id)
 
 
-'''
-INSERT
 class SimpleSingleMutation(graphene.Mutation):
     class Arguments:
         string_field = graphene.String(required=True)
@@ -40,43 +38,6 @@ class SimpleSingleMutation(graphene.Mutation):
                                     float_field=float_field)
         simple_single.save()
         return SimpleSingleMutation(simple_single=simple_single)
-UPDATE
-class SimpleSingleMutation(graphene.Mutation):
-    class Arguments:
-        id = graphene.ID()
-        string_field = graphene.String(required=True)
-        bool_field = graphene.Boolean(required=True)
-        int_field = graphene.Int(required=True)
-        float_field = graphene.Float(required=True)
-
-    simple_single = graphene.Field(SimpleSingleType)
-
-    @classmethod
-    def mutate(cls, root, info, string_field, bool_field, int_field, float_field, id):
-        simple_single = SimpleSingle.objects.get(id=id)
-        simple_single.string_field = string_field
-        simple_single.bool_field = bool_field
-        simple_single.int_field = int_field
-        simple_single.float_field = float_field
-
-        simple_single.save()
-        return SimpleSingleMutation(simple_single=simple_single)
-
-'''
-
-
-# DELETE
-class SimpleSingleMutation(graphene.Mutation):
-    class Arguments:
-        id = graphene.ID()
-
-    simple_single = graphene.Field(SimpleSingleType)
-
-    @classmethod
-    def mutate(cls, root, info, id):
-        simple_single = SimpleSingle.objects.get(id=id)
-        simple_single.delete()
-        return
 
 
 class Mutation(graphene.ObjectType):
